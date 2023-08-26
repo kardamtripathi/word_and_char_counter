@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Char Counter</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 20px;
+            background-color: antiquewhite;
+        }
+        .container{
+            margin: 25px;
+            text-align: center;
+        }
+        h1{
+            font-size: 35px;
+            font-weight: bold;
+        }
+        #textBox{
+            padding: 15px;
+            font-size: 20px;
+            font-weight: 500;
+            width: 70vw;
+            margin: 10px;
+        }
+        p{
+            font-size: 35px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        span{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Word & Char Counter</h1>
+        <textarea name="text" id="textBox" cols="30" rows="20" placeholder="Start writing here..."></textarea>
+        <p id="para">Words Count is 
+            <span id="wordCount">0</span> 
+            and Characters Count is 
+            <span id="charCount">0</span>
+        </p>
+    </div>
+    <script>
+        let textBox = document.getElementById("textBox");
+        let wordCount = document.getElementById("wordCount");
+        let charCount = document.getElementById("charCount");
+        textBox.addEventListener('input', function(){
+            let text = this.value;
+            let charLength = text.length;
+            charCount.innerHTML = charLength;
+            text = text.trim();
+            let words = text.split(" ");
+            let cleanList = words.filter(function(element){
+                return element != "";
+            });
+            console.log(cleanList);
+            wordCount.innerHTML = cleanList.length;
+        });
+    </script>
+</body>
+
+</html>
